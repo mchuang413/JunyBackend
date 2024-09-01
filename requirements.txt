@@ -1,3 +1,4 @@
+Cython>=0.29.0
 Flask==2.1.2
 Flask-CORS==3.0.10
 aiohttp==3.7.4
