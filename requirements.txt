@@ -2,12 +2,12 @@ Flask==2.3.1
 Werkzeug==2.3.1
 Flask-CORS==3.0.10
 aiohttp==3.8.4
-pymongo==4.0.1
-APScheduler==3.8.1
+pymongo==4.8.0
+APScheduler==3.10.4
 requests==2.30.0
-python-dotenv==0.19.2
+python-dotenv==1.0.0
 alpaca-trade-api==3.2.0
-stripe==2.56.0
+stripe==10.9.0
 PyYAML==6.0.1
 setuptools>=74.0.0
 wheel>=0.44.0
