@@ -6,17 +6,18 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import requests
 import atexit
 import dotenv
-from alpaca_trade_api import REST, TimeFrame  # Import Alpaca API client
+from alpaca_trade_api import REST, TimeFrame 
 import stripe
+import os
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
 dotenv.load_dotenv()
 
-uri = dotenv.env.MONGO_URI
+uri = os.getenv("MONGODB_URI")
 
-stripe.api_key = dotenv.env.STRIPE_SECRET_KEY
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
 
 client = MongoClient(uri, server_api=ServerApi('1'))
 
@@ -352,19 +353,16 @@ def get_api_keys(username):
 
     return jsonify({"status": "success", "alpaca_key": api_keys["alpaca_key"], "alpaca_secret": api_keys["alpaca_secret"]})
 
-# Add a simple route to verify HTTPS setup
 @app.route("/hello")
 def hello():
     return "Hello, world!"
 
-# Schedule the news fetching function to run 10 times a day
 scheduler = BackgroundScheduler()
 scheduler.add_job(func=fetch_news, trigger="interval", hours=2.4)
 scheduler.start()
 
-# Shut down the scheduler when exiting the app
 atexit.register(lambda: scheduler.shutdown())
 
 if __name__ == "__main__":
-    context = ('/etc/letsencrypt/live/michaelape.site/fullchain.pem', '/etc/letsencrypt/live/michaelape.site/privkey.pem')  # Update paths to your SSL certificate and key
-    app.run(host='0.0.0.0', port=443, ssl_context=context)
+    # context = ('/etc/letsencrypt/live/michaelape.site/fullchain.pem', '/etc/letsencrypt/live/michaelape.site/privkey.pem')  # Update paths to your SSL certificate and key
+    app.run(host='0.0.0.0', port=8000)
