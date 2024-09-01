@@ -363,7 +363,7 @@ scheduler.start()
 
 atexit.register(lambda: scheduler.shutdown())
 
-PORT = int(os.getenv("PORT", 8000))
+PORT = int(os.getenv("PORT", 8080))
 
 if __name__ == "__main__":
     # context = ('/etc/letsencrypt/live/michaelape.site/fullchain.pem', '/etc/letsencrypt/live/michaelape.site/privkey.pem')  # Update paths to your SSL certificate and key
