@@ -1,0 +1,8 @@
+Flask==2.1.2
+Flask-CORS==3.0.10
+pymongo==4.0.1
+APScheduler==3.8.1
+requests==2.27.1
+python-dotenv==0.19.2
+alpaca-trade-api==1.4.3
+stripe==2.56.0
