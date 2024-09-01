@@ -8,6 +8,6 @@ python-dotenv==0.19.2
 alpaca-trade-api==1.4.3
 stripe==2.56.0
 Cython==0.29.36
-PyYAML==6.0.1
+PyYAML==5.4.1
 setuptools>=69.2.0
 wheel>=0.43.0
